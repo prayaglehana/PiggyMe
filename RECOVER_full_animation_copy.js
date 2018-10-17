@@ -6,7 +6,7 @@
 	} else {
 		console.log('localhostconnect');
 		// set the provider you want from Web3.providers
-		web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+		web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:8545"));
 	}
 	
 	web3.eth.defaultAccount =web3.eth.accounts[0];
@@ -24,11 +24,12 @@
 	
   //  roulette.registerMe({from: web3.eth.accounts[1], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
   //  roulette.registerMe({from: web3.eth.accounts[2], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
-    
+	
   roulette.owner(function(error, result){
 	if(!error)
 		{
 			owner=result;
+			console.log('owner'+owner)
 			$("#owner").html(result);
 
 			
@@ -3490,7 +3491,7 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 								});
 					}
 					else{
-						console.log('this is not your turn');
+						console.error('this is not your turn');
 					}
 
 			})
