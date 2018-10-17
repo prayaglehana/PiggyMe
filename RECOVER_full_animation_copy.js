@@ -1,3 +1,4 @@
+
 (function (lib, img, cjs, ss, an) {
 
 	if (typeof web3 !== 'undefined') {
@@ -8,17 +9,18 @@
 		web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 	}
 	
-	web3.eth.defaultAccount = web3.eth.accounts[0];
+	web3.eth.defaultAccount =web3.eth.accounts[0];
+
+    
 
 	var rouletteContract = web3.eth.contract ([{"constant":false,"inputs":[],"name":"Fire","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"registerMe","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"transferFunds","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[],"name":"currentRound","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"dead","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person1","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person2","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"regTill","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"Turn","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"winner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"x","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"}]);
 
-	var roulette = rouletteContract.at('0xe61bd1e9b0afe1a90c4b43b24194cd1569fddbad');
-	console.log('start of code');
-
+	var roulette = rouletteContract.at('0xf5d346b20ad3b72bb155c59f12fe6fd4155704eb');
+	
 	var person1_add;
 	var person2_add;
 	var owner;
-   
+	
 	
   //  roulette.registerMe({from: web3.eth.accounts[1], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
   //  roulette.registerMe({from: web3.eth.accounts[2], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
@@ -3437,55 +3439,106 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 			
 		var root=this;
 		
+			
+		$("#regme").click(function(){
+
+		roulette.registerMe({from:web3.eth.accounts[0], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
+		//web3.eth.getAccounts((error, accounts) => console.log(accounts[0]))
+		console.log('accnt reg: '+web3.eth.accounts[0]);
+		});
+
+		
 		this.fireinstance.addEventListener("click", fl_ClickToGoToAndPlayFromFrame_5.bind(this));
 		
 		function fl_ClickToGoToAndPlayFromFrame_5()
 		{
 			
-			if(turn%2!=0)   //person1                         
-					{//	console.log('person1 is shooting');
-						roulette.Fire({from: person1_add}, function(err, res){});
-						
-						roulette.dead.call(function(err, res){		
 
-							if(res==true){
-								
-								//console.log('person1 is dead');			
-								root.gotoAndPlay(36); //person1shootdie					
-								
+			roulette.fire(function(error,res){
+					if(!error){
+														
+									roulette.dead.call(function(err, res){		
+										if(turn%2!=0)
+												{if(res==true){
+													
+													//console.log('person1 is dead');			
+													root.gotoAndPlay(36); //person1shootdie					
+													
 
+													
+												}
+												else{
+													//console.log('person1 is not dead');
+													root.gotoAndPlay(184); //person1shootnodie
+												
+												}
+											}
+									else{
+													if(res==true)	{
 								
-							}
-							else{
-								//console.log('person1 is not dead');
-								root.gotoAndPlay(184); //person1shootnodie
-							
-							}
-					});
-					
+																		//console.log('person2 is dead');
+																	root.gotoAndPlay(344);//person2shootdie
+														
+																
+																}
+																
+																	else{
+																		//console.log('person2 is not dead');
+																		root.gotoAndPlay(443); //person2shootnodie
+																		}
+													}
+								});
 					}
-					
-			else//person2
-					{//console.log('person2 is shooting');
-						roulette.Fire({from: person2_add}, function(err, res){});
-						roulette.dead.call(function(err, res){											
-							if(res==true)	{
+					else{
+						console.log('this is not your turn');
+					}
+
+			})
+			// if(turn%2!=0)   //person1                         
+			// 		{//	console.log('person1 is shooting');
+			// 			roulette.Fire({from: person1_add}, function(err, res){
+			// 			});
+						
+			// 			roulette.dead.call(function(err, res){		
+
+			// 				if(res==true){
 								
-								//console.log('person2 is dead');
-							root.gotoAndPlay(344);//person2shootdie
+			// 					//console.log('person1 is dead');			
+			// 					root.gotoAndPlay(36); //person1shootdie					
+								
+
+								
+			// 				}
+			// 				else{
+			// 					//console.log('person1 is not dead');
+			// 					root.gotoAndPlay(184); //person1shootnodie
+							
+			// 				}
+			// 		});
+					
+			// 		}
+					
+			// else//person2
+			// 		{//console.log('person2 is shooting');
+			// 			roulette.Fire({from: person2_add}, function(err, res){});
+			// 			roulette.dead.call(function(err, res){											
+			// 				if(res==true)	{
+								
+			// 					//console.log('person2 is dead');
+			// 				root.gotoAndPlay(344);//person2shootdie
 				
 						
-						}
+			// 			}
 						
-							else{
-								//console.log('person2 is not dead');
-								root.gotoAndPlay(443); //person2shootnodie
-								}
+			// 				else{
+			// 					//console.log('person2 is not dead');
+			// 					root.gotoAndPlay(443); //person2shootnodie
+			// 					}
 
-									});	
+			// 						});	
 
 
-					}
+			// 		}
 			
 				
 	

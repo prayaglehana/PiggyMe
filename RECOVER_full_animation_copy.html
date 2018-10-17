@@ -12,11 +12,16 @@
 <meta charset="UTF-8">
 <meta name="authoring-tool" content="Adobe_Animate_CC">
 <title>RECOVER_full_animation_copy</title>
+<link href="style.css" rel="stylesheet">
+
+<link href="css/responsive/responsive.css" rel="stylesheet">
+
 <link rel="stylesheet" type="text/css" href="main.css">
 <!-- write your code here -->
 <script src="./node_modules/web3/dist/web3.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+
 <script src="RECOVER_full_animation_copy.js"></script>
 <script>
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
@@ -92,20 +97,23 @@ function playSound(id, loop) {
 </script>
 <!-- write your code here -->
 </head>
+<!-- Title -->
+<title>PiggyMe -Decentralized Gambling Platform</title>
+
 <body onload="init();" style="margin:0px;">
-	<font size="6">Russian Roulltette</font>
-	<div class="row">
+	<header size="20">Russian Roulltette</header>
+
 
 		
-				<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:800px; height:600px">
+				<div class="c" id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:800px; height:600px">
 					<canvas id="canvas" width="800" height="600" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
 					<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:800px; height:600px; position: absolute; left: 0px; top: 0px; display: block;">
 					</div>
 				</div>
-
+			
 				<div class="container">				
-					<h2 >Owner</h2>
-					<h2 id="owner">undefined</h2>
+					<h2 style="color: azure" >Owner</h2>
+					<h2 id="owner "style="color: azure">undefined</h2>
 
 					<label for="person1" class="col-lg-2 control-label">person1</label>
 					<label id="pers1" class="col-lg-2 control-label">undefined</label>
@@ -113,18 +121,20 @@ function playSound(id, loop) {
 					<label for="person2" class="col-lg-2 control-label">person2</label>
 					<label id="pers2" class="col-lg-2 control-label">undefined</label>
 
-					<h3 >currentRound</h3>
-					<h3 id="currentRoundid">round no.</h3>
+					<h3 style="color: azure">currentRound</h3>
+					<h3 id="currentRoundid"style="color: azure">round no.</h3>
 				
-					<h4 >WINNER</h4>
-					<h4 id="winnerid">nobody</h4>
+					<h4 style="color: azure">WINNER</h4>
+					<h4 id="winnerid" style="color: azure">nobody</h4>
 				
 
 					<label for="turnC" class="col-lg-2 control-label">TURN OF</label>
 					<label id="turnid" class="col-lg-2 control-label">undefined</label>
 
+					<button id="regme" >Register Me</button>
+
 				
 				</div>
-	</div>
+
 </body>
 </html>

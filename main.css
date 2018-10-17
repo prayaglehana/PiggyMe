@@ -1,16 +1,21 @@
 body {
-    background-color:rgb(231, 216, 167);
+  
+    background-color: rgb(29, 52, 73);
     padding: 2em;
     font-family: 'Raleway','Source Sans Pro', 'Arial';
 }
-.row {
-    display: flex;
+.c{
+    float:left;
 }
+
 .container {
+
+float:right;
+
+    width: 30%;
+    color: aliceblue;
    
-    width: 50%;
-   padding-left: 40%;
-    padding-top:0%;
+   
  
 }
 label {
