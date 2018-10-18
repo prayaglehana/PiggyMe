@@ -41,6 +41,6 @@
 
     $("#regme").click(function(){
         console.log('you are being registered');
-        roulette.registerMe({to:owner,from: web3.eth.accounts[0], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
+        roulette.registerMe({from: web3.eth.accounts[0], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
         console.log('you sent from'+web3.eth.accounts[0]+'to'+web3.eth.defaultAccount);
     });
