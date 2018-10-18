@@ -3440,10 +3440,11 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 	this.frame_0 = function() {
 			
 		var root=this;
-		
+	    var r=roulette;
 			
 		$("#regme").click(function(){
-			roulette.registerMe({from:web3.eth.accounts[0], to:owner, value: "web3.toWei('1', 'ether')"});
+			console.log(r);
+			r.registerMe({from:web3.eth.accounts[0], to:owner, value: "web3.toWei('1', 'ether')"});
 		//roulette.registerMe({from:web3.eth.accounts[0],to:owner, gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
 		//web3.eth.getAccounts((error, accounts) => console.log(accounts[0]))
 
