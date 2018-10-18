@@ -1,12 +1,12 @@
 
 (function (lib, img, cjs, ss, an) {
-
+	
 	if (typeof web3 !== 'undefined') {
 		web3 = new Web3(web3.currentProvider);
 	} else {
 		console.log('localhostconnect');
 		// set the provider you want from Web3.providers
-		web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:8545"));
+		web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 	}
 	
 	web3.eth.defaultAccount =web3.eth.accounts[0];
@@ -15,8 +15,9 @@
 
 	var rouletteContract = web3.eth.contract ([{"constant":false,"inputs":[],"name":"Fire","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"registerMe","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"transferFunds","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[],"name":"currentRound","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"dead","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person1","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person2","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"regTill","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"Turn","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"winner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"x","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"}]);
 
-	var roulette = rouletteContract.at('0xe06aef1fab1f73ff225afbae636bd2e29f5f159c');
+	var roulette = rouletteContract.at('0xaddba4b535e59533b3f295a708afb12194912f3e');
 	
+
 	var person1_add;
 	var person2_add;
 	var owner;
@@ -3442,9 +3443,10 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 		
 			
 		$("#regme").click(function(){
-			roulette.methods.registerMe().send({from:web3.eth.accounts[0], to:owner, value: "web3.toWei('1', 'ether')"});
+			roulette.registerMe({from:web3.eth.accounts[0], to:owner, value: "web3.toWei('1', 'ether')"});
 		//roulette.registerMe({from:web3.eth.accounts[0],to:owner, gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
 		//web3.eth.getAccounts((error, accounts) => console.log(accounts[0]))
+
 		console.log('accnt reg: '+web3.eth.accounts[0]+'1 ether to '+owner);
 		});
 
