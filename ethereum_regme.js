@@ -13,7 +13,7 @@
     
         var rouletteContract = web3.eth.contract ([{"constant":false,"inputs":[],"name":"Fire","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"registerMe","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"transferFunds","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[],"name":"currentRound","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"dead","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person1","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person2","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"regTill","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"Turn","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"winner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"x","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"}]);
     
-        var roulette = rouletteContract.at('0x59b67c1643e0019311026e0b1e0b78ddd51cc402');
+        var roulette = rouletteContract.at('0xa7cd17f96218fe65b977aabaf6ce407e7b73de56');
         
     
         var person1_add;
@@ -50,11 +50,14 @@
 
     
     $("#start").click(function(){
+      
        								
-        roulette.regTill.call(function(err, res){		
-           if(res>1)
-                    {
-                        href="RECOVER_full_animation_copy.html";}
+        roulette.regTill.call(function(err, res){	
+            var totalPeople=parseInt(String(res), 10);
+            console.log(totalPeople);	
+           if(totalPeople>1)
+                    {console.log('helo');
+                    window.location.href = "RECOVER_full_animation_copy.html";}
         else{
             $("#status").html('Opponent is not found yet Please Wait');
         }});
