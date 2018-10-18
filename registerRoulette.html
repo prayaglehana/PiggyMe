@@ -3,18 +3,86 @@
 <head>
    
 <title>Page Title</title>
+   <!-- Core Stylesheet -->
+   <link href="style.css" rel="stylesheet">
+
+   <!-- Responsive CSS -->
+   <link href="css/responsive/responsive.css" rel="stylesheet">
 </head>
 
+
 <body>
-        <h1>Wanna Play</h1>
+        <h1 style="color:cyan;border-block-end-color: antiquewhite; text-align: center ; padding-top: 4%">Russian Roulette</h1>
         
+        
+
      
 
 
 
 </body>
-        <button id="regme">Register Me</button>
+    <style>
         
+        body{
+            background-color:  rgb(29, 52, 73);
+        }
+                        .button {
+                display: inline-block;
+                padding: 15px 25px;
+                font-size: 24px;
+                cursor: pointer;
+                text-align: center;
+                text-decoration: none;
+                outline: none;
+                color: #fff;
+                background-color: #4CAF50;
+                border: none;
+                border-radius: 15px;
+                box-shadow: 0 9px #999;
+                }
+                .sh{
+                    background-color: rgb(206, 96, 68);
+                }
+
+                .button:hover {background-color: #3e8e41}
+
+                .button:active {
+                background-color: #3e8e41;
+                box-shadow: 0 5px #666;
+                transform: translateY(4px);
+                }
+    </style>
+    <p  style="color:azure ; text-align: center ; padding-top: 4%">Switch your guns between the enemy and bet which one shots himself. </p>
+    <p  style="color:azure ; text-align: center ; padding-top: 10px">Are you ready? </p>
+    <div style="text-align: center; padding-top: 3%">
+        <button class="button" id="regme">Play</button>
+    <div style="margin-top: 40px">
+
+
+        <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
+                
+                <form action="#" method="get">
+                   
+                  
+                    <select class="custom-select">
+                        <option selected>Bet</option>
+                        <option value="1">0.5</option>
+                        <option value="2">1</option>
+                        <option value="3">2 </option>
+                    </select>
+                    
+                </form>
+
+                <label  style="color:azure">piggies</label>
+           
+
+         </div>
+
+         <p style="color:azure">Note after clicking Play you agreee to bet selected piggy </p>
+   </div>
+          <button class="button sh" id="start">start</button>
+
+
 
 
         <script src="./node_modules/web3/dist/web3.min.js"></script>
@@ -22,4 +90,5 @@
         <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
 
         <script src="ethereum_regme.js"></script>
+    </div>
 </html>

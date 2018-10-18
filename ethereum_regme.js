@@ -21,7 +21,10 @@
         var owner;
 
         console.log(roulette);
+
+
         
+        $("#status").html('Opponent is not found yet Please Wait');
         
       //  roulette.registerMe({from: web3.eth.accounts[1], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
       //  roulette.registerMe({from: web3.eth.accounts[2], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
@@ -44,3 +47,15 @@
         roulette.registerMe({from: web3.eth.accounts[0], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
         console.log('you sent from'+web3.eth.accounts[0]+'to'+web3.eth.defaultAccount);
     });
+
+    
+    $("#start").click(function(){
+       								
+        roulette.regTill.call(function(err, res){		
+           if(res>1)
+                    {
+                        href="RECOVER_full_animation_copy.html";}
+        else{
+            $("#status").html('Opponent is not found yet Please Wait');
+        }});
+  });
