@@ -3441,15 +3441,6 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 			
 		var root=this;
 	    console.log('r'+roulette);
-			
-		$("#regme").click(function(){
-			console.log('in reg'+roulette);
-			r.registerMe({from:web3.eth.accounts[0], to:owner, value: "web3.toWei('1', 'ether')"});
-		//roulette.registerMe({from:web3.eth.accounts[0],to:owner, gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
-		//web3.eth.getAccounts((error, accounts) => console.log(accounts[0]))
-
-		console.log('accnt reg: '+web3.eth.accounts[0]+'1 ether to '+owner);
-		});
 
 		
 		this.fireinstance.addEventListener("click", fl_ClickToGoToAndPlayFromFrame_5.bind(this));
@@ -3555,6 +3546,18 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 		The  timeline will stop/pause at the frame where you insert this code.
 		Can also be used to stop/pause the timeline of movieclips.
 		*/
+		console.log('heo');
+		console.log('r'+r);
+					
+		$("#regme").click(function(){
+			console.log('in reg'+roulette);
+			r.registerMe({from:web3.eth.accounts[0], to:owner, value: "web3.toWei('1', 'ether')"});
+		//roulette.registerMe({from:web3.eth.accounts[0],to:owner, gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
+		//web3.eth.getAccounts((error, accounts) => console.log(accounts[0]))
+
+		console.log('accnt reg: '+web3.eth.accounts[0]+'1 ether to '+owner);
+		});
+
 		
 		this.gotoAndPlay(1);
 	}
