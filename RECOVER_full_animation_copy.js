@@ -1,3 +1,5 @@
+var roulette;
+
 
 (function (lib, img, cjs, ss, an) {
 	
@@ -15,7 +17,7 @@
 
 	var rouletteContract = web3.eth.contract ([{"constant":false,"inputs":[],"name":"Fire","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"registerMe","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"transferFunds","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[],"name":"currentRound","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"dead","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person1","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person2","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"regTill","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"Turn","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"winner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"x","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"}]);
 
-	var roulette = rouletteContract.at('0xe06aef1fab1f73ff225afbae636bd2e29f5f159c');
+	var roulette = rouletteContract.at('0xdf871b48c67b15b270234e132e46e15361350e52');
 	
 
 	var person1_add;
@@ -25,7 +27,7 @@
 	
   //  roulette.registerMe({from: web3.eth.accounts[1], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
   //  roulette.registerMe({from: web3.eth.accounts[2], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
-
+ 
   roulette.owner(function(error, result){
 	if(!error)
 		{
@@ -3546,17 +3548,18 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 		The  timeline will stop/pause at the frame where you insert this code.
 		Can also be used to stop/pause the timeline of movieclips.
 		*/
-		console.log('heo');
-		console.log('r'+r);
+	
 					
 		$("#regme").click(function(){
 			console.log('in reg'+roulette);
-			r.registerMe({from:web3.eth.accounts[0], to:owner, value: "web3.toWei('1', 'ether')"});
-		//roulette.registerMe({from:web3.eth.accounts[0],to:owner, gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
-		//web3.eth.getAccounts((error, accounts) => console.log(accounts[0]))
+			console.log('accnt reg: '+web3.eth.accounts[0]+'1 ether to '+owner);
+        //	roulette.registerMe({from:web3.eth.accounts[1], to:owner, value: web3.toWei('1', 'ether')});
+        roulette.registerMe({from:web3.eth.accounts[0],to:owner, gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
+        //web3.eth.getAccounts((error, accounts) => console.log(accounts[0]))
+        
+      
+        });
 
-		console.log('accnt reg: '+web3.eth.accounts[0]+'1 ether to '+owner);
-		});
 
 		
 		this.gotoAndPlay(1);
