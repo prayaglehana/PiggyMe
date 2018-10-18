@@ -2,7 +2,7 @@ var roulette;
 
 
 (function (lib, img, cjs, ss, an) {
-	var web3=require('web3');
+	
 	if (typeof web3 !== 'undefined') {
 		web3 = new Web3(web3.currentProvider);
 	} else {
@@ -3549,16 +3549,6 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 		Can also be used to stop/pause the timeline of movieclips.
 		*/
 	
-					
-		$("#regme").click(function(){
-			console.log('in reg'+roulette);
-			console.log('accnt reg: '+web3.eth.accounts[0]+'1 ether to '+owner);
-        //	roulette.registerMe({from:web3.eth.accounts[1], to:owner, value: web3.toWei('1', 'ether')});
-        roulette.registerMe({from:web3.eth.accounts[0],to:owner, gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
-        //web3.eth.getAccounts((error, accounts) => console.log(accounts[0]))
-        
-      
-        });
 
 
 		
