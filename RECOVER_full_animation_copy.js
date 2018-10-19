@@ -2,6 +2,7 @@ var roulette , turn;
 
 
 (function (lib, img, cjs, ss, an) {
+	console.log('helos');
 	
 	if (typeof web3 !== 'undefined') {
 		web3 = new Web3(web3.currentProvider);
@@ -17,7 +18,7 @@ var roulette , turn;
 
 	var rouletteContract = web3.eth.contract ([{"constant":false,"inputs":[],"name":"Fire","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"registerMe","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"transferFunds","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[],"name":"currentRound","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"dead","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person1","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person2","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"regTill","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"Turn","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"winner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"x","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"}]);
 
-	var roulette = rouletteContract.at('0xe06aef1fab1f73ff225afbae636bd2e29f5f159c');
+	var roulette = rouletteContract.at('0x8f2cc58be8fc17f4ce32031b18de04152f9c9708');
 	
 
 	var person1_add;
@@ -40,6 +41,8 @@ var roulette , turn;
 	else
 		console.error(error);
 });
+
+
 roulette.person1(function(error, result){
 	if(!error)
 		{     person1_add=result;
@@ -3529,14 +3532,20 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 				
 		$("#winnerid").html(person2_add);
 		 						
-		roulette.transferFunds(function(error, result){
-									  
-			if(!error)
-  
-						cosnole.log('fund successfully transferred to winner');
+		
+		$("#claimreward").click(function(){
+			roulette.claimReward({from: web3.eth.accounts[0], gas: 3000000, value: web3.toWei('1', 'ether')},function(error, result){
+				if(!error)
+					{    
+						console.log('winner has been paid');
+					  
+					}
+				else
+					console.error(error);
+			});   
+			
+		});
 	
-			else   console.error(error);
-		 });
 	}
 	this.frame_235 = function() {
 		playSound("csuspensesound");
@@ -3562,15 +3571,20 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 		
 		this.stop();
 		$("#winnerid").html(person1_add);
-						
-		roulette.transferFunds(function(error, result){
-		  
-			if(!error)
-  
-						cosnole.log('fund successfully transferred to winner');
-	
-			else   console.error(error);
-		 });
+			
+		$("#claimreward").click(function(){
+			roulette.claimReward({from: web3.eth.accounts[0], gas: 3000000, value: web3.toWei('1', 'ether')},function(error, result){
+				if(!error)
+					{    
+						console.log('winner has been paid');
+					  
+					}
+				else
+					console.error(error);
+			});   
+			
+		});
+		
 	}
 	this.frame_444 = function() {
 		playSound("csuspensesound");
