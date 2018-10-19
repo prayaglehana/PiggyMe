@@ -13,7 +13,7 @@
     
         var rouletteContract = web3.eth.contract ([{"constant":false,"inputs":[],"name":"Fire","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"registerMe","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[],"name":"transferFunds","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[],"name":"currentRound","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"dead","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person1","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person2","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"regTill","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"Turn","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"winner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"x","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"}]);
     
-        var roulette = rouletteContract.at('0xdf871b48c67b15b270234e132e46e15361350e52');
+        var roulette = rouletteContract.at('0x48acca22027c89908feb6d50a12950797d2f4b6d');
         
     
         var person1_add;
@@ -21,9 +21,7 @@
         var owner;
 
         console.log(roulette);
-
-
-        
+      
         $("#status").html('Opponent is not found yet Please Wait');
         
       //  roulette.registerMe({from: web3.eth.accounts[1], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
@@ -50,7 +48,7 @@
 
     
     $("#start").click(function(){
-      
+      console.log('yo');
        								
         roulette.regTill.call(function(err, res){	
             var totalPeople=parseInt(String(res), 10);
