@@ -18,7 +18,7 @@ var roulette , turn ,deadCheck;
 
 	var rouletteContract = web3.eth.contract ([{"anonymous":false,"inputs":[{"indexed":false,"name":"deadStatus","type":"bool"}],"name":"deadSpecified","type":"event"},{"constant":false,"inputs":[],"name":"claimReward","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"Fire","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"registerMe","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[],"name":"currentRound","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"dead","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person1","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person2","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"regTill","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"Turn","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"winner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"x","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"}]);
 
-	var roulette = rouletteContract.at('0xd239774d35d70c1317a73b26cab1dfbef6347bdc');
+	var roulette = rouletteContract.at('0x31191d7b1420c08d8e31f60bae905e5049e1c8ec');
 
 	var deadCheck=roulette.deadSpecified();
 	
@@ -3497,6 +3497,32 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 														
 								
 									}
+																						
+													
+
+
+														roulette.Turn(function(error, result){
+																	if(!error)
+																		{
+																		turn=result;
+																				if(turn%2!=0)
+																					$("#turnid").html(person1_add);
+																				else
+																				
+																					$("#turnid").html(person2_add);}
+																	else
+																			{   console.log('turn could not be called ');
+																				console.error(error);}
+																			});
+
+														roulette.currentRound(function(error, result){
+															console.log('result of current round'+result);
+															if(!error)
+
+																		$("#currentRoundid").html(String(result));
+
+															else   console.error(error);
+														});
 		
 								});
 			
@@ -3577,7 +3603,7 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 	}
 	this.frame_342 = function() {
 		this.gotoAndPlay(1);
-		window.location.reload();
+		
 	}
 	this.frame_352 = function() {
 		playSound("csuspensesound");
@@ -3617,7 +3643,6 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 	this.frame_571 = function() {
 		this.gotoAndPlay(1);
 		
-		window.location.reload();
 	}
 
 	// actions tween:
