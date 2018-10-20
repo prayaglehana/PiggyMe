@@ -18,7 +18,7 @@ var roulette , turn;
 
 	var rouletteContract = web3.eth.contract ([{"constant":true,"inputs":[],"name":"regTill","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"x","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"Fire","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"dead","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"transferFunds","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"person1","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person2","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"currentRound","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"registerMe","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[],"name":"Turn","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"winner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]);
 
-	var roulette = rouletteContract.at('0xe9cc8a87b3d1989ba0e3d5c34f1df339f5debcea');
+	var roulette = rouletteContract.at('0xd0ff87f4ba1d8274f79c9d03316d295342259117');
 	
 
 	var person1_add;
@@ -3457,11 +3457,11 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 			roulette.Fire(function(error,res){
 					if(!error){
 						console.log('Fire is called'+res);
-												
+						roulette.dead.call(function(err, deadStatus){	
+							if(!err){console.log('deadstatus'+deadStatus);
 													if(turn%2!=0)
 													{
-																	roulette.dead.call(function(err, deadStatus){	
-																if(!err){
+																
 																			if(deadStatus==true){
 																					
 																					console.log('person1 is dead');			
@@ -3475,11 +3475,10 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 																					root.gotoAndPlay(184); //person1shootnodie
 																				
 																				}
-																			}
-																		});
+																			
+																	
 													}
-														else{roulette.dead.call(function(err, deadStatus){
-															if(!err){	
+														else{
 																			if(deadStatus==true)	{
 														
 																								console.log('person2 is dead');
@@ -3493,8 +3492,10 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 																								root.gotoAndPlay(443); //person2shootnodie
 																								}
 																							}
-																						});
+																	
 																		}
+
+																	});
 														
 					
 				}
