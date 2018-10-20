@@ -3460,7 +3460,7 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 		{
 			
 			
-			roulette.one(function(error,res){
+			roulette.Fire(function(error,res){
 					if(!error){
 					console.log('fire is called');
 					}
