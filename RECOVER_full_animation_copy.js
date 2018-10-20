@@ -3457,7 +3457,7 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 			roulette.Fire(function(error,res){
 					if(!error){
 						console.log('Fire is called'+res);
-													console.log('dead'+deadStatus);
+												
 													if(turn%2!=0)
 													{
 																	roulette.dead.call(function(err, deadStatus){	
