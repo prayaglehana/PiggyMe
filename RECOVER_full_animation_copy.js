@@ -18,7 +18,7 @@ var roulette , turn ,deadCheck;
 
 	var rouletteContract = web3.eth.contract ([{"anonymous":false,"inputs":[{"indexed":false,"name":"deadStatus","type":"bool"}],"name":"deadSpecified","type":"event"},{"constant":false,"inputs":[],"name":"claimReward","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"Fire","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"registerMe","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[],"name":"currentRound","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"dead","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person1","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person2","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"regTill","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"Turn","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"winner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"x","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"}]);
 
-	var roulette = rouletteContract.at('0xc295c67c2fb95bb10eb7f10b49953487a05b3dd8');
+	var roulette = rouletteContract.at('0xd239774d35d70c1317a73b26cab1dfbef6347bdc');
 
 	var deadCheck=roulette.deadSpecified();
 	
@@ -90,47 +90,7 @@ roulette.person2(function(error, result){
 	 });
 
 
-	 deadCheck.watch(function(error,res){
-		var dead=res.args.deadStatus;
-		
-		console.log('deadstatus'+dead);
-		if(turn%2!=0)
-		{
-					
-								if(dead==true){
-										
-										console.log('person1 is dead');			
-										root.gotoAndPlay(36); //person1shootdie					
-										
-
-										
-									}
-									else{
-										console.log('person1 is not dead');
-										root.gotoAndPlay(184); //person1shootnodie
-									
-									}
-								
-						
-		}
-			else{
-								if(dead==true)	{
-			
-													console.log('person2 is dead');
-												root.gotoAndPlay(344);//person2shootdie
-									
-											
-											}
-											
-												else{
-													console.log('person2 is not dead');
-													root.gotoAndPlay(443); //person2shootnodie
-													}
-												
-						
-							}
-
-						});
+	
 	
 
 
@@ -3498,7 +3458,47 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 		
 		function fl_ClickToGoToAndPlayFromFrame_5()
 		{
-			
+			deadCheck.watch(function(error,res){
+				var dead=res.args.deadStatus;
+				
+				console.log('deadstatus'+dead);
+				if(turn%2!=0)
+				{
+							
+										if(dead==true){
+												
+												console.log('person1 is dead');			
+												root.gotoAndPlay(36); //person1shootdie					
+												
+		
+												
+											}
+											else{
+												console.log('person1 is not dead');
+												root.gotoAndPlay(184); //person1shootnodie
+											
+											}
+										
+								
+				}
+					else{
+										if(dead==true)	{
+					
+															console.log('person2 is dead');
+														root.gotoAndPlay(344);//person2shootdie
+											
+													
+													}
+													
+														else{
+															console.log('person2 is not dead');
+															root.gotoAndPlay(443); //person2shootnodie
+															}
+														
+								
+									}
+		
+								});
 			
 			roulette.Fire(function(error,res){
 					if(!error){
