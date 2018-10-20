@@ -18,7 +18,7 @@ var roulette , turn ,deadCheck;
 
 	var rouletteContract = web3.eth.contract ([{"anonymous":false,"inputs":[{"indexed":false,"name":"deadStatus","type":"bool"}],"name":"deadSpecified","type":"event"},{"constant":false,"inputs":[],"name":"claimReward","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"Fire","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"registerMe","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[],"name":"currentRound","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"dead","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person1","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person2","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"regTill","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"Turn","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"winner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"x","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"}]);
 
-	var roulette = rouletteContract.at('0x90efdb19e2d24bde523ac4e5bbd9c0acb320d811');
+	var roulette = rouletteContract.at('0x58009527c1379f8af693899a99c1e051a521a6fa');
 
 	var deadCheck=roulette.deadSpecified();
 	
@@ -3468,7 +3468,10 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 																	if(!error)
 																		{
 																		turn=result;
+																		console.log('already: '+String($("#turnid").text())+'newt '+turn);
 																		turnchanged=parseInt(String($("#turnid").text(), 10))-turn;
+																		console.log('turnchanged'+turnchanged);
+
 																		
 												
 																		
