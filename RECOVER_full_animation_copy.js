@@ -3456,7 +3456,7 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 		
 			roulette.Fire(function(error,res){
 					if(!error){
-						console.log('Fire is called'+res);
+						console.log('Fire is called');
 						roulette.dead.call(function(err, deadStatus){	
 							if(!err){console.log('deadstatus'+deadStatus);
 													if(turn%2!=0)
@@ -3505,10 +3505,11 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 					else{
 						console.error('this is not your turn');
 					}
-				console.log('I am here ');
+			
 
 
 			});
+			console.log('I am here ');
 		
 		}
 	}
@@ -3518,12 +3519,12 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 		Can also be used to stop/pause the timeline of movieclips.
 		*/
 		
-		// $("#checkdead").click(function(){
-		// roulette.dead.call(function(err, deadStatus){	
-		// 	if(!err){
-		// 							console.log('calling rep'+deadStatus);
-		// 	}});
-		// });
+		$("#checkdead").click(function(){
+		roulette.dead.call(function(err, deadStatus){	
+			if(!err){
+									console.log('calling rep'+deadStatus);
+			}});
+		});
 	
 
 
