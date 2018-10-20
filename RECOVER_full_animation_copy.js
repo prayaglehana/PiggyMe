@@ -3454,9 +3454,46 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 		{
 			
 			
-			dead=roulette.Fire(function(error,res){
+			roulette.Fire.call(function(error,res){
 					if(!error){
+						var dead=res;
 						console.log('Fire is called');
+						console.log('deadstatus'+dead);
+						if(turn%2!=0)
+						{
+									
+												if(dead==true){
+														
+														console.log('person1 is dead');			
+														root.gotoAndPlay(36); //person1shootdie					
+														
+		
+														
+													}
+													else{
+														console.log('person1 is not dead');
+														root.gotoAndPlay(184); //person1shootnodie
+													
+													}
+												
+										
+						}
+							else{
+												if(dead==true)	{
+							
+																	console.log('person2 is dead');
+																root.gotoAndPlay(344);//person2shootdie
+													
+															
+															}
+															
+																else{
+																	console.log('person2 is not dead');
+																	root.gotoAndPlay(443); //person2shootnodie
+																	}
+																
+										
+											}
 					}
 					
 					else{
@@ -3464,42 +3501,7 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 						}
 					});
 				
-					console.log('deadstatus'+dead);
-					if(turn%2!=0)
-					{
-								
-											if(dead==true){
-													
-													console.log('person1 is dead');			
-													root.gotoAndPlay(36); //person1shootdie					
-													
-	
-													
-												}
-												else{
-													console.log('person1 is not dead');
-													root.gotoAndPlay(184); //person1shootnodie
-												
-												}
-											
-									
-					}
-						else{
-											if(dead==true)	{
-						
-																console.log('person2 is dead');
-															root.gotoAndPlay(344);//person2shootdie
-												
-														
-														}
-														
-															else{
-																console.log('person2 is not dead');
-																root.gotoAndPlay(443); //person2shootnodie
-																}
-															
-									
-										}
+				
 
 
 		
