@@ -3449,8 +3449,8 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 
 	// timeline functions:
 	this.frame_0 = function() {
-			
 		var root=this;
+		
 	    console.log('r'+roulette);
 	
 		
@@ -3492,6 +3492,7 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 		// 							console.log('calling rep'+deadStatus);
 		// 	}});
 		// });
+		var root=this;
 		deadCheck.watch(function(error,res){
 			
 																						
