@@ -18,7 +18,7 @@ var roulette , turn;
 
 	var rouletteContract = web3.eth.contract ([{"constant":false,"inputs":[],"name":"claimReward","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"registerMe","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[],"name":"currentRound","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"dead","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"Fire","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person1","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person2","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"regTill","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"Turn","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"winner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"x","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"}]);
 
-	var roulette = rouletteContract.at('0x6cd20c4cb2df99005b35cbb2603c35246c407e84');
+	var roulette = rouletteContract.at('0xa55e19816649e9d09324933530814c40b171ae35');
 	
 
 	var person1_add;
@@ -3456,50 +3456,56 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 			
 			roulette.Fire.call(function(error,res){
 					if(!error){
-						var dead=res;
-						console.log('Fire is called');
-						console.log('deadstatus'+dead);
-						if(turn%2!=0)
-						{
-									
-												if(dead==true){
-														
-														console.log('person1 is dead');			
-														root.gotoAndPlay(36); //person1shootdie					
-														
-		
-														
-													}
-													else{
-														console.log('person1 is not dead');
-														root.gotoAndPlay(184); //person1shootnodie
-													
-													}
-												
-										
-						}
-							else{
-												if(dead==true)	{
-							
-																	console.log('person2 is dead');
-																root.gotoAndPlay(344);//person2shootdie
-													
-															
-															}
-															
-																else{
-																	console.log('person2 is not dead');
-																	root.gotoAndPlay(443); //person2shootnodie
-																	}
-																
-										
-											}
+					console.log('fire is called');
 					}
 					
 					else{
 						console.error('this is not your turn');
 						}
 					});
+			var deadCheck=roulette.deadSpecified();
+
+			deadCheck.watch(function(error,dead){
+					
+					console.log('Fire is called');
+					console.log('deadstatus'+dead);
+					if(turn%2!=0)
+					{
+								
+											if(dead==true){
+													
+													console.log('person1 is dead');			
+													root.gotoAndPlay(36); //person1shootdie					
+													
+	
+													
+												}
+												else{
+													console.log('person1 is not dead');
+													root.gotoAndPlay(184); //person1shootnodie
+												
+												}
+											
+									
+					}
+						else{
+											if(dead==true)	{
+						
+																console.log('person2 is dead');
+															root.gotoAndPlay(344);//person2shootdie
+												
+														
+														}
+														
+															else{
+																console.log('person2 is not dead');
+																root.gotoAndPlay(443); //person2shootnodie
+																}
+															
+									
+										}
+
+									});
 				
 				
 
