@@ -1,6 +1,6 @@
 var roulette , turn;
 
-var fired=false;
+
 (function (lib, img, cjs, ss, an) {
 	console.log('helos');
 	
@@ -18,7 +18,7 @@ var fired=false;
 
 	var rouletteContract = web3.eth.contract ([{"constant":true,"inputs":[],"name":"regTill","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"x","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"Fire","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"dead","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"transferFunds","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"person1","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person2","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"currentRound","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"registerMe","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[],"name":"Turn","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"winner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]);
 
-	var roulette = rouletteContract.at('0xb396b896d3491a874c2f201b743843eeef066388');
+	var roulette = rouletteContract.at('0x998151e1468e6676cd2ce4e10b0035d5f2d196f4');
 	
 
 	var person1_add;
@@ -3457,9 +3457,49 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 			roulette.Fire(function(error,res){
 					if(!error){
 						console.log('Fire is called'+res);
-						fired=true;
+						
+						roulette.dead.call(function(err, deadStatus){	
+							if(!err){
+													console.log('dead'+deadStatus);
+													if(turn%2!=0)
+																{if(deadStatus==true){
+																					
+																					console.log('person1 is dead');			
+																					root.gotoAndPlay(36); //person1shootdie					
+																					
+									
+																					
+																				}
+																				else{
+																					console.log('person1 is not dead');
+																					root.gotoAndPlay(184); //person1shootnodie
+																				
+																				}
+																			}
+															else{
+																			if(deadStatus==true)	{
+														
+																								console.log('person2 is dead');
+																							root.gotoAndPlay(344);//person2shootdie
+																				
+																						
+																						}
+																						
+																							else{
+																								console.log('person2 is not dead');
+																								root.gotoAndPlay(443); //person2shootnodie
+																								}
+																			}
+																		}
+										else{
+											console.err('sorry dead could not be called');
+										}
+														
+					});
+				}
+	
 					
-					}
+					
 					else{
 						console.error('this is not your turn');
 					}
@@ -3467,55 +3507,6 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 
 
 			});
-		console.log('fired'+fired)
-		if(fired==true)			
-			{   fired=false;
-				roulette.dead.call(function(err, deadStatus){	
-								if(!err){
-														console.log('dead'+deadStatus);
-														if(turn%2!=0)
-																	{if(deadStatus==true){
-																						
-																						console.log('person1 is dead');			
-																						root.gotoAndPlay(36); //person1shootdie					
-																						
-										
-																						
-																					}
-																					else{
-																						console.log('person1 is not dead');
-																						root.gotoAndPlay(184); //person1shootnodie
-																					
-																					}
-																				}
-																else{
-																				if(deadStatus==true)	{
-															
-																									console.log('person2 is dead');
-																								root.gotoAndPlay(344);//person2shootdie
-																					
-																							
-																							}
-																							
-																								else{
-																									console.log('person2 is not dead');
-																									root.gotoAndPlay(443); //person2shootnodie
-																									}
-																				}
-																			}
-											else{
-												console.err('sorry dead could not be called');
-											}
-															
-						});
-					}
-		
-		
-				
-			
-				
-	
-							
 		
 		}
 	}
@@ -3524,6 +3515,13 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 		The  timeline will stop/pause at the frame where you insert this code.
 		Can also be used to stop/pause the timeline of movieclips.
 		*/
+		
+		$("#checkdead").click(function(){
+		roulette.dead.call(function(err, deadStatus){	
+			if(!err){
+									console.log('calling rep'+deadStatus);
+			}});
+		});
 	
 
 
