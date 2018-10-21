@@ -2,7 +2,7 @@ var roulette , turn ,deadCheck;
 
 
 (function (lib, img, cjs, ss, an) {
-	console.log('helos');
+	
 	
 	if (typeof web3 !== 'undefined') {
 		web3 = new Web3(web3.currentProvider);
@@ -12,13 +12,15 @@ var roulette , turn ,deadCheck;
 		web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 	}
 	
-	web3.eth.defaultAccount =web3.eth.accounts[0];
+  
 
-    
+	
 
 	var rouletteContract = web3.eth.contract ([{"anonymous":false,"inputs":[{"indexed":false,"name":"deadStatus","type":"bool"}],"name":"deadSpecified","type":"event"},{"constant":false,"inputs":[],"name":"claimReward","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"Fire","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"registerMe","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[],"name":"currentRound","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"dead","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person1","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person2","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"regTill","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"Turn","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"winner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"x","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"}]);
-
+	//helo
 	var roulette = rouletteContract.at('0x998151e1468e6676cd2ce4e10b0035d5f2d196f4');
+
+
 
 	var deadCheck=roulette.deadSpecified();
 	
