@@ -18,7 +18,7 @@ var roulette , turn ,deadCheck;
 
 	var rouletteContract = web3.eth.contract ([{"anonymous":false,"inputs":[{"indexed":false,"name":"deadStatus","type":"bool"}],"name":"deadSpecified","type":"event"},{"constant":false,"inputs":[],"name":"claimReward","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"Fire","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"registerMe","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"constant":true,"inputs":[],"name":"currentRound","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"dead","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person1","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"person2","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"regTill","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"Turn","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"winner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"x","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"}]);
 
-	var roulette = rouletteContract.at('0xb396b896d3491a874c2f201b743843eeef066388');
+	var roulette = rouletteContract.at('0x998151e1468e6676cd2ce4e10b0035d5f2d196f4');
 
 	var deadCheck=roulette.deadSpecified();
 	
@@ -26,7 +26,7 @@ var roulette , turn ,deadCheck;
 	var person1_add;
 	var person2_add;
 	var owner;
-	
+	console.log('r'+roulette);
 
   //  roulette.registerMe({from: web3.eth.accounts[1], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
   //  roulette.registerMe({from: web3.eth.accounts[2], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
@@ -3457,7 +3457,105 @@ p.nominalBounds = new cjs.Rectangle(-199.1,-308.7,464.2,304.6);
 		this.fireinstance.addEventListener("click", fl_ClickToGoToAndPlayFromFrame_5.bind(this));
 		
 		function fl_ClickToGoToAndPlayFromFrame_5()
-		{
+		{	
+			
+			roulette.Fire(function(error,res){
+					if(!error){
+					console.log('fire is called');
+					}
+					
+					else{
+						console.error('this is not your turn');
+						}
+					});
+					var root=this;
+					deadCheck.watch(function(error,res){
+						
+																									
+																
+			
+						var turnchanged;
+						roulette.Turn(function(error, result){
+									if(!error)
+										{
+									
+										console.log('already: '+turn+'newt '+result);
+										turnchanged=result-turn;
+										turn=result;
+										console.log('turnchanged'+turnchanged);
+			
+										
+				
+										
+												if(turn%2!=0)
+													$("#turnid").html(person1_add);
+												else
+												
+													$("#turnid").html(person2_add);}
+									else
+											{   console.log('turn could not be called ');
+												console.error(error);}
+											});
+			
+						roulette.currentRound(function(error, result){
+							console.log('result of current round'+result);
+							if(!error)
+			
+										$("#currentRoundid").html(String(result));
+			
+							else   console.error(error);
+						});
+			
+						var dead=res.args.deadStatus;
+			
+						console.log('deadstatus'+dead);
+						console.log('turnchanges outside'+turnchanged);
+			
+						if(turn%2!=0 )
+						{
+									
+												if(dead==true){
+														
+														console.log('person1 is dead');			
+														root.gotoAndPlay(36); //person1shootdie					
+														
+				
+														
+													}
+													else{
+														console.log('person1 is not dead');
+														root.gotoAndPlay(184); //person1shootnodie
+													
+													}
+												
+										
+						}
+							else if(turn%2==0 ){
+												if(dead==true)	{
+							
+																	console.log('person2 is dead');
+																root.gotoAndPlay(344);//person2shootdie
+													
+															
+															}
+															
+																else{
+																	console.log('person2 is not dead');
+																	root.gotoAndPlay(443); //person2shootnodie
+																	}
+																
+										
+											}
+			
+			});
+
+				
+				
+
+
+		
+			console.log('I am here ');
+		
 		console.log('hello I am called');
 		}
 	}
