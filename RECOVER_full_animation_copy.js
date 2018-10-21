@@ -21,14 +21,14 @@ var roulette , turn ,deadCheck;
 	var roulette = rouletteContract.at('0x998151e1468e6676cd2ce4e10b0035d5f2d196f4');
 
 
-
+	console.log('rpsjfj'+roulette);
 	var deadCheck=roulette.deadSpecified();
 	
 
 	var person1_add;
 	var person2_add;
 	var owner;
-	console.log('r'+roulette);
+	console.log('robject'+roulette);
 
   //  roulette.registerMe({from: web3.eth.accounts[1], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
   //  roulette.registerMe({from: web3.eth.accounts[2], gas: 3000000, value: web3.toWei('1', 'ether')}, function(err, res){});
